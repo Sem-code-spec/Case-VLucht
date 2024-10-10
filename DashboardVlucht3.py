@@ -18,9 +18,8 @@ df_vlieg_maatschappij = pd.read_csv('samengevoegde_luchtvaartmaatschappijen.csv'
 df_vlucht = pd.read_csv('airports-extended-clean (1).csv', delimiter=';')
 
 #Data frame Schema
-df_schema = pd.read_csv('schedule_airport1.csv')
-df_schema = pd.read_csv('schedule_airport2.csv')
-schedule_airport = pd.concat([df_airport1, df_airport2], ignore_index=True)
+df_schema = pd.read_csv('schedule_airport.csv')
+
 
 #Voeg een nieuwe kolom toe met alleen de letters uit de "FLT"-kolom
 df_schema['Airline_code'] = df_schema['FLT'].str.extract('([A-Za-z]+)')
