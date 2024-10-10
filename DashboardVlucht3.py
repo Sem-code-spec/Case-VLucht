@@ -217,7 +217,7 @@ with tab2:
         },
         color_discrete_sequence=['blue'],
         width=1500,  # Verhoog de breedte van de figuur
-        #height=1500  # Vergroot de hoogte van de figuur om meer ruimte te creëren
+        height=1500  # Vergroot de hoogte van de figuur om meer ruimte te creëren
     )
 
     # Update de layout om de x-as titel toe te voegen
