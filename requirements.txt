@@ -34,3 +34,4 @@ streamlit_folium==0.23.0
 traitlets==5.14.3
 wcwidth==0.2.13
 wheel==0.43.0
+mkl-service==2.4.0
