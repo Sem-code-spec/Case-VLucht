@@ -280,23 +280,17 @@ with tab3:
 
 with tab4:
     @st.cache_data()
-    def csv(csv):
-        df = pd.read_csv(csv, index_col=0)
-        df['uur'] = df['afstand']/900000
-        df['minuut'] = df['afstand']%900000/15000
-        df['seconde'] = df['afstand']%900000%15000/250
-        return df
-    airports_fil = csv('airport_fil.csv')
-    
-    @st.cache_data()
     def make_map(df):
         m = folium.Map(location=(30, 10), zoom_start=2.2, tiles="cartodb positron")
-        for row in df.iterrows():
-            folium.Marker(location = [row[1][6],row[1][7]],
-                                popup = f'gem vliegtijd \n {int(row[1][-3])}:{int(row[1][-2])}:{int(row[1][-2])}' ,
-                                tooltip='<b>'+f'{row[1][1]}' +'<b>',
-                                ).add_to(m)
+        for _, row in df.iterrows():
+            folium.Marker(
+                location=[row[6], row[7]],
+                popup=f'Gemiddelde vliegtijd is \n {int(row["uur"])}:{int(row["minuut"])}:{int(row["seconde"])}',
+                tooltip=f'<b>{row[1]}</b>'
+            ).add_to(m)
         return m
+    
+    # Folium kaart in de Streamlit app
     st_data = st_folium(make_map(airports_fil))
 
 
