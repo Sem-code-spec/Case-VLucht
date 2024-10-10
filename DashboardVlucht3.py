@@ -293,7 +293,7 @@ with tab4:
         m = folium.Map(location=(30, 10), zoom_start=2.2, tiles="cartodb positron")
         for row in df.iterrows():
             folium.Marker(location = [row[1][6],row[1][7]],
-                                popup = f'gem vliegtijd is \n {int(row[1][-3])}:{int(row[1][-2])}:{int(row[1][-2])}' ,
+                                popup = f'gem vliegtijd \n {int(row[1][-3])}:{int(row[1][-2])}:{int(row[1][-2])}' ,
                                 tooltip='<b>'+f'{row[1][1]}' +'<b>',
                                 ).add_to(m)
         return m
