@@ -553,6 +553,15 @@ with tab3:
 with tab4:
     st.header("Wereld Kaart")
     @st.cache_data()
+    def csv(csv):
+        df = pd.read_csv(csv, index_col=0)
+        df['uur'] = df['afstand'] / 900000
+        df['minuut'] = (df['afstand'] % 900000) / 15000
+        df['seconde'] = (df['afstand'] % 900000 % 15000) / 250
+        return df
+
+    airports_fil = csv('airport_fil.csv')
+    @st.cache_data()
     def make_map(df):
         m = folium.Map(location=(30, 10), zoom_start=2.2, tiles="cartodb positron")
         for _, row in df.iterrows():
